@@ -1,7 +1,9 @@
+require_relative 'core/storage'
+
 module Tcg
   class Generate
     def self.act
-      path, line = File.read('.tcg').split(' ')
+      path, line = Core::Storage.get
       puts "GENERATE #{path} on line #{line}"
     end
   end

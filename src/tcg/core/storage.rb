@@ -1,12 +1,14 @@
+require 'yaml'
+
 module Tcg
   module Core
     class Storage
       def self.put data
-        File.write('.tcg', data.join(' '))
+        File.write('.tcg', YAML.dump(data))
       end
 
       def self.get
-        File.read('.tcg')
+        YAML.load(File.read('.tcg'))
       end
     end
   end
