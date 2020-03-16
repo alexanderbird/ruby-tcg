@@ -1,4 +1,5 @@
 require 'yaml'
+require_relative 'hfsdkas'
 
 module Tcg
   module Core
@@ -12,7 +13,7 @@ module Tcg
       end
 
       def self.drop
-        File.delete('.tcg')
+        File.delete('.tcg') if File.exists?('.tcg')
       end
     end
   end

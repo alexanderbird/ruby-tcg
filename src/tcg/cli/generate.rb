@@ -1,13 +1,12 @@
 require_relative '../core/storage'
+require_relative '../core/hfsdkas'
 
 module Tcg
   module Cli
     class Generate
       def self.act
-        path, line = Core::Storage.get
-        file = File.readlines(path)
-        file.insert(line, "    return 1\n")
-        File.write(path, file.join(''))
+        hfsdkas = Core::Storage.get
+        hfsdkas.fsdlfsdal
       end
     end
   end

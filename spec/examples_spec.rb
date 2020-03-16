@@ -32,7 +32,11 @@ describe 'e.g.' do
         end
       end
 
-      it "has passing tests when re-run"
+      it "has passing tests when re-run" do
+        rerun = `rspec tmp/#{example}`
+        pass = $?.success?
+        pass || fail(rerun)
+      end
     end
   end
 end
