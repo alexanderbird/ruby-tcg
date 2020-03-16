@@ -6,11 +6,19 @@ def run_example(name)
     .gsub(/[0-9]+\.[0-9]+ seconds/, '<n> seconds') 
 end
 
-describe 'examples:' do
-  examples = Dir.entries('examples')
-    .select{|dir| !dir.match(/^\./)}
-  examples.each do |example|
-    it(example.gsub(/_/, ' ')) do
+examples = Dir.entries('examples').select{|dir| !dir.match(/^\./)}
+examples.each do |example|
+  describe(example) do
+    output = ''
+    before :all do
+      output = run_example example
+    end
+
+    it("produces the correct output") do
+      verify output
+    end
+
+    it("changes files correctly") do
       verify do
         run_example example
       end
