@@ -1,20 +1,17 @@
-F
+==> examples/when_getter_returns_wrong_value_it_generates_code/foo.rb <==
+class Foo
+  def get_one
+    1
+  end
+end
 
-Failures:
+==> examples/when_getter_returns_wrong_value_it_generates_code/foo_spec.rb <==
+require_relative '../../src/tcg/assertions'
+require_relative 'foo'
 
-  1) foo has goodness
-     Failure/Error: Tcg::Assertions.equal(2, foo, :get_one)
-
-     Exception:
-       Expected 2, got 1
-     # ./src/tcg/assertions.rb:10:in `equal'
-     # ./examples/when_getter_returns_wrong_value_it_generates_code/foo_spec.rb:11:in `block (2 levels) in <top (required)>'
-
-Finished in <n> seconds (files took <n> seconds to load)
-1 example, 1 failure
-
-Failed examples:
-
-rspec ./examples/when_getter_returns_wrong_value_it_generates_code/foo_spec.rb:9 # foo has goodness
-
-GENERATE /Users/alexanderbird/code/personal/ruby-tcg/examples/when_getter_returns_wrong_value_it_generates_code/foo_spec.rb on line 4
+describe 'foo' do
+  it 'has goodness' do
+    foo = Foo.new
+    Tcg::Assertions.equal(2, foo, :get_one)
+  end
+end

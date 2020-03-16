@@ -1,10 +1,6 @@
 require_relative '../../src/tcg/assertions'
+require_relative 'foo'
 
-class Foo
-  def get_one
-    1
-  end
-end
 describe 'foo' do
   it 'has goodness' do
     foo = Foo.new

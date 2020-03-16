@@ -20,7 +20,7 @@ examples.each do |example|
 
     it("changes files correctly") do
       verify do
-        run_example example
+        `find examples/#{example} -name "*.rb" | xargs tail -n +1`
       end
     end
   end
