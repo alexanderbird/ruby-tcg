@@ -1,11 +1,5 @@
 require 'approvals/rspec'
 
-def run_example(name)
-  output = `rspec examples/#{name} && ruby src/tcg/commit.rb || ruby src/tcg/generate.rb`
-  output
-    .gsub(/[0-9]+\.[0-9]+ seconds/, '<n> seconds') 
-end
-
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
