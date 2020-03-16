@@ -1,0 +1,1 @@
+rspec exampleswhen_getter_returns_wrong_value_then_generate && ruby src/tcg/commit.rb || ruby src/tcg/generate.rb
