@@ -1,6 +1,7 @@
 ==> examples/when_getter_returns_wrong_value_it_generates_code/foo.rb <==
 class Foo
   def get_one
+    return 1
     1
   end
 end

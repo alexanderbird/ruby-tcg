@@ -1,15 +1,17 @@
 require_relative 'cli/commit'
 require_relative 'cli/generate'
+require_relative 'cli/prep'
+
 module Tcg
   module Cli
     def self.run command
-      case command.to_sym
-      when :commit
-        Tcg::Cli::Commit.act
-      when :generate
-        Tcg::Cli::Generate.act
+      command_class_name = 'Tcg::Cli::' + command.to_s.capitalize
+      begin
+        command_class = Kernel.const_get(command_class_name)
+      rescue NameError => e
+        puts "Don't know how to #{command}, #{e}"
       else
-        puts "Don't know how to #{command}"
+        command_class.act
       end
     end
   end

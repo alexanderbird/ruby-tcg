@@ -10,6 +10,10 @@ module Tcg
       def self.get
         YAML.load(File.read('.tcg'))
       end
+
+      def self.drop
+        File.delete('.tcg')
+      end
     end
   end
 end

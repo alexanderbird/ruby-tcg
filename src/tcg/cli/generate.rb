@@ -5,7 +5,9 @@ module Tcg
     class Generate
       def self.act
         path, line = Core::Storage.get
-        puts "GENERATE #{path} on line #{line}"
+        file = File.readlines(path)
+        file.insert(line, "    return 1\n")
+        File.write(path, file.join(''))
       end
     end
   end
